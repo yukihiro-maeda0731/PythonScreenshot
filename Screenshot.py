@@ -7,6 +7,11 @@ import tenserflow as tf
 import tenserflow_datasets as tfds
 from tenserflow import keras
 
+builder = tfds.builder('rock_paper_scissors')
+info = builder.info
+ds_train = tfds.load(name="rock_paper_scissors", split="train")
+ds_test = tfds.load(name="rock_paper_scissors", split="test")
+
 # スクリーンショットの処理
 # i = 1
 # savepath = 'D:\portfolio\PythonScreenshot'
