@@ -12,6 +12,8 @@ info = builder.info
 ds_train = tfds.load(name="rock_paper_scissors", split="train")
 ds_test = tfds.load(name="rock_paper_scissors", split="test")
 
+fig = tfds.show_examples(info, ds_train)
+
 # スクリーンショットの処理
 # i = 1
 # savepath = 'D:\portfolio\PythonScreenshot'
