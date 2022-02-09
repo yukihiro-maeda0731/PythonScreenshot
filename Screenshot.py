@@ -1,6 +1,8 @@
 import pyautogui as pag
 from time import sleep
 import smtplib, ssl
+import os
+from email.mime.application import MIMEApplication
 import requests
 
 # 画像認識の処理
@@ -36,27 +38,28 @@ sender, password = read_creds()
 receiver = sender
 
 message = """\
-Subject: Inventory Notification
-We have new inventory.
+Subject: スクリーンショットを撮影しました
+スクリーンショットを撮影しました
 """
 
 context = ssl.create_default_context()
 
 with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        server.login(sender, password)
-        server.sendmail(sender, receiver, message)
-        print("メールを送信しました")
+    # スクリーンショットの処理
+    server.login(sender, password)
+    i = 1
+    savepath = 'D:\portfolio\PythonScreenshot'
+    try:
+        while True:
+            
+            img = pag.screenshot(savepath + '/screenshot' + str(i) + '.png')
+            sleep(30)
+            i = i + 1
+            server.sendmail(sender, receiver, message)
+            print("スクリーンショットを撮影しました"+ str(i) + '枚目')
+    except KeyboardInterrupt:
+        print('\n')    
+    
 
 
 
-# スクリーンショットの処理
-i = 1
-savepath = 'D:\portfolio\PythonScreenshot'
-
-try:
-    while True:
-        img = pag.screenshot(savepath + '/screenshot' + str(i) + '.png')
-        sleep(30)
-        i = i + 1
-except KeyboardInterrupt:
-    print('\n')
