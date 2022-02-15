@@ -57,6 +57,7 @@ with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
             i = i + 1
             # server.sendmail(sender, receiver, message)
             print("スクリーンショットを撮影しました")
+
     except KeyboardInterrupt:
         print('\n')    
     
