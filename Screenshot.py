@@ -1,11 +1,27 @@
-import pyautogui as pag
-from time import sleep
-import smtplib, ssl
-import os
-from email.mime.application import MIMEApplication
-import requests
+# TensorFlow and tf.keras
+import tensorflow as tf
 
-# 画像認識の処理
+# Helper libraries
+import numpy as np
+import matplotlib.pyplot as plt
+
+print(tf.__version__)
+
+
+
+
+
+
+
+
+# import pyautogui as pag
+# from time import sleep
+# import smtplib, ssl
+# import os
+# from email.mime.application import MIMEApplication
+# import requests
+
+# # 画像認識の処理
 # import matplotlib.pyplot as plt
 # import numpy as np
 # import tenserflow as tf
@@ -20,46 +36,46 @@ import requests
 
 
 
-# メール送信の処理
+# # メール送信の処理
 
-def read_creds():
-    user = passw = ""
-    with open("credentials.txt", "r", encoding="utf-8") as f:
-        file = f.readlines()
-        user = file[0].strip()
-        passw = file[1].strip()
+# # def read_creds():
+# #     user = passw = ""
+# #     with open("credentials.txt", "r", encoding="utf-8") as f:
+# #         file = f.readlines()
+# #         user = file[0].strip()
+# #         passw = file[1].strip()
 
-    return user, passw
+# #     return user, passw
 
-port = 465
+# # port = 465
 
-sender, password = read_creds()
+# # sender, password = read_creds()
 
-receiver = sender
+# # receiver = sender
 
-message = """\
-Subject: スクリーンショットを撮影しました
-スクリーンショットを撮影しました
-"""
+# # message = """\
+# # Subject: スクリーンショットを撮影しました
+# # スクリーンショットを撮影しました
+# # """
 
-context = ssl.create_default_context()
+# # context = ssl.create_default_context()
 
-with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-    # スクリーンショットの処理
-    server.login(sender, password)
-    i = 0
-    savepath = 'D:\portfolio\PythonScreenshot'
-    try:
-        while True:
-            print("スクリーンショットを撮影します")
-            sleep(10)
-            img = pag.screenshot(savepath + '/screenshot' + str(i+1) + '.png')
-            i = i + 1
-            # server.sendmail(sender, receiver, message)
-            print("スクリーンショットを撮影しました")
+# # with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+# #     # スクリーンショットの処理
+# #     server.login(sender, password)
+# #     i = 0
+# #     savepath = 'D:\portfolio\PythonScreenshot'
+# #     try:
+# #         while True:
+# #             print("スクリーンショットを撮影します")
+# #             sleep(10)
+# #             img = pag.screenshot(savepath + '/screenshot' + str(i+1) + '.png')
+# #             i = i + 1
+# #             # server.sendmail(sender, receiver, message)
+# #             print("スクリーンショットを撮影しました")
 
-    except KeyboardInterrupt:
-        print('\n')    
+# #     except KeyboardInterrupt:
+# #         print('\n')    
     
 
 
